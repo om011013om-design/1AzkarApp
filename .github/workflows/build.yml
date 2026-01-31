@@ -1,10 +1,6 @@
 name: Build Android APK
 
-on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+on: [push, workflow_dispatch]
 
 jobs:
   build:
@@ -24,9 +20,8 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
+      - name: Install Flet
         run: |
-          python -m pip install --upgrade pip
           pip install flet
 
       - name: Setup Flutter
@@ -41,5 +36,5 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v3
         with:
-          name: 1Azkar-App
+          name: Azkar-App
           path: build/apk/
